@@ -16,6 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Employee {
 
+
     @Id
     @GeneratedValue
     @Type(type = "uuid-char")
