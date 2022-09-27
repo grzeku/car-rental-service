@@ -1,10 +1,12 @@
 package com.pl.carrentalservice.clients;
 
+import com.pl.carrentalservice.reservation.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +21,9 @@ public class Client {
     private String surname;
     private String email;
     private String address;
+    @OneToMany(mappedBy = "client")
+    private List<Reservation> reservations;
+
 
     public Client(String name, String surname, String email, String address) {
         this.name = name;
