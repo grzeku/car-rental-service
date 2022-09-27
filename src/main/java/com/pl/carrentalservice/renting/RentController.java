@@ -1,4 +1,4 @@
-package com.pl.carrentalservice.renting;
-
-public class RentController {
-}
+//package com.pl.carrentalservice.renting;
+//
+//public class RentController {
+//}

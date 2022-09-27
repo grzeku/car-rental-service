@@ -10,11 +10,11 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name ="Clients")
+
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+   @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String name;
     private String surname;
     private String email;

@@ -1,4 +1,4 @@
-package com.pl.carrentalservice.renting;
-
-public class RentService {
-}
+//package com.pl.carrentalservice.renting;
+//
+//public class RentService {
+//}
