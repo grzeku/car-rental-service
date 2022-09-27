@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
-import pl.sda.carrental.carrental.branches.Branches;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +24,6 @@ public class Employee {
     private String name;
     private String surname;
     private Enum<EmployeePosition> employeePositionEnum;
-    private Enum<Branches> branch;
+    private String branch;
 
 }
