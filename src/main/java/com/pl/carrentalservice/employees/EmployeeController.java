@@ -1,4 +1,7 @@
-package com.pl.carrentalservice.employees;
-
-public class EmployeeController {
-}
+//package com.pl.carrentalservice.employees;
+//
+//import org.springframework.stereotype.Controller;
+//
+//@Controller
+//public class EmployeeController {
+//}
