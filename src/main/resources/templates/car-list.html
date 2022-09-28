@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>First starter page</title>
+  <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container my-5">
+  <h2>Employees list</h2>
+
+  <div sec:authorize="hasRole('ADMIN')">
+    <a class="btn btn-primary btn-sm mb-3" th:href="@{/add-employee-form}">Add
+      employee</a>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th><p>id</p></th>
+      <th><p>name</p></th>
+      <th><p>surname</p></th>
+      <th><p>email</p></th>
+      <th><p>age</p></th>
+      <th sec:authorize="hasRole('ADMIN')"><p>actions</p></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+      <td th:text="${employee.getId()}"></td>
+      <td th:text="${employee.getName()}"></td>
+      <td th:text="${employee.getSurname()}"></td>
+      <td th:text="${employee.getEmail()}"></td>
+      <td th:text="${employee.getAge()}"></td>
+      <td sec:authorize="hasRole('ADMIN')">
+        <a class="btn btn-success btn-sm"
+           th:href="@{'/update-employee-form/' + ${employee.id}}">Update</a>
+        <a class="btn btn-danger btn-sm"
+           th:href="@{'/delete-employee/' + ${employee.id}}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link disabled" th:if="${currentPage == 1}">Previous</a>
+        <a class="page-link" th:href="@{'?page=' + ${currentPage - 1} + '&size=' + ${size}}"
+           th:unless="${currentPage == 1}">Previous</a>
+      </li>
+
+      <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+        <a class="page-link" th:href="@{'?page=' + ${i} + '&size=' + ${size}}" th:if="${currentPage != i}">[[${i}]]</a>
+        <a class="page-link active" th:if="${currentPage == i}">[[${i}]]</a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link disabled" th:if="${currentPage == totalPages}">Next</a>
+        <a class="page-link" th:href="@{'?page=' + ${currentPage + 1} + '&size=' + ${size}}"
+           th:unless="${currentPage == totalPages}">Next</a>
+      </li>
+      <li class="list-group-item">
+        <ul class="list-group-horizontal-sm">
+          <li th:each="i : ${sizes}">
+            <a class="text-sm-center" th:href="@{'?page=1' + '&size=' + ${i}}">[[${i}]]&nbsp;</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </nav>
+</div>
+</body>
+</html>
