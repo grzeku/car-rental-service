@@ -8,7 +8,7 @@ import com.pl.carrentalservice.cars.Car;
 import com.pl.carrentalservice.clients.Client;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.time.LocalDate;
 
 
 @Entity
@@ -19,12 +19,12 @@ import java.util.Calendar;
 public class Reservation {
 @Id
 @GeneratedValue
-@Column(name = "rent_id")
+@Column(name = "reservation_id")
     private Integer id;
 
-    private Calendar dateOfReservation;
-    private Calendar datePickUp;
-    private Calendar dateReturn;
+    private LocalDate dateOfReservation;
+    private LocalDate dateOfPickUp;
+    private LocalDate dateOfReturn;
     @OneToOne(cascade = CascadeType.ALL )
     @JoinColumn(name="car_id")
     private Car car;
@@ -36,10 +36,10 @@ public class Reservation {
     private Integer pricePerDay;
 
 
-    public Reservation(Calendar dateOfReservation, Calendar datePickUp, Calendar dateReturn, Car car, Client client, String branchStart, String branchEnd, Integer pricePerDay) {
+    public Reservation(LocalDate dateOfReservation, LocalDate dateOfPickUp, LocalDate dateOfReturn, Car car, Client client, String branchStart, String branchEnd, Integer pricePerDay) {
         this.dateOfReservation = dateOfReservation;
-        this.datePickUp = datePickUp;
-        this.dateReturn = dateReturn;
+        this.dateOfPickUp = dateOfPickUp;
+        this.dateOfReturn = dateOfReturn;
         this.car = car;
         this.client = client;
         this.branchStart = branchStart;

@@ -3,13 +3,13 @@ package com.pl.carrentalservice.clients;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/clients")
+@Controller
+@RequestMapping("/clients")
 @RequiredArgsConstructor
 @Slf4j
 public class ClientController {
@@ -21,9 +21,22 @@ private final ClientService service;
     return service.getAll();
     }
 
-    @PostMapping()
+    @PostMapping("/addclient")
     public void addClient (@RequestBody Client client){
         log.info("Received post request");
          service.addClients(List.of(client));
+    }
+
+    @GetMapping
+    String registrationTemplate(final Model model) {
+        model.addAttribute("client", new CreateClientRequest());
+        return "registration";
+    }
+
+    @PostMapping
+    String register(@ModelAttribute CreateClientRequest request) {
+        log.info("Received request to register {}", request.getEmail());
+        service.add(request);
+        return "index";
     }
 }

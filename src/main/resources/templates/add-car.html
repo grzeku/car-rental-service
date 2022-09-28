@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>First starter page</title>
+  <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container my-5">
+  <h2>Add new employee</h2>
+  <hr>
+  <form method="post" th:action="@{/add-car}" th:object="${car}">
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="make">Make</label>
+      <input class="form-control" id="make" placeholder="Make" th:field="*{make}" type="text">
+      <span class="text-danger" th:errors="*{make}" th:if="${#fields.hasErrors('make')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="model">Make</label>
+      <input class="form-control" id="model" placeholder="Model" th:field="*{model}" type="text">
+      <span class="text-danger" th:errors="*{model}" th:if="${#fields.hasErrors('model')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="bodyStyle">Body Style</label>
+      <input class="form-control" id="bodyStyle" placeholder="Body Style" th:field="*{bodyStyle}" type="text">
+      <span class="text-danger" th:errors="*{bodyStyle}" th:if="${#fields.hasErrors('bodyStyle')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="productionYear">Production Year</label>
+      <input class="form-control" id="productionYear" placeholder="productionYear" th:field="*{productionYear}" type="text">
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="mileage">Mileage</label>
+      <input class="form-control" id="mileage" placeholder="Mileage" th:field="*{mileage}" type="text">
+      <span class="text-danger" th:errors="*{mileage}" th:if="${#fields.hasErrors('mileage')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="carAvailabilityStatus">Car availability status</label>
+      <input class="form-control" id="carAvailabilityStatus" placeholder="Car availability status" th:field="*{carAvailabilityStatus}" type="text">
+      <span class="text-danger" th:errors="*{carAvailabilityStatus}" th:if="${#fields.hasErrors('carAvailabilityStatus')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="price">Price</label>
+      <input class="form-control" id="price" placeholder="Price" th:field="*{price}" type="text">
+      <span class="text-danger" th:errors="*{price}" th:if="${#fields.hasErrors('price')}"></span>
+    </div>
+
+    <button class="btn btn-warning mt-2" type="submit">Submit</button>
+  </form>
+</div>
+</body>
+</html>
