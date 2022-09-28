@@ -1,9 +1,9 @@
-package com.pl.carrentalservice.reservation;
+package com.pl.carrentalservice.rent;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ReservationService {
+public class RentService {
 }

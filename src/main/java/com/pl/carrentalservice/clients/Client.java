@@ -11,24 +11,33 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(staticName = "of")
 
 public class Client {
-    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+   @Id
+   @Column(unique = true, name = "client_id")
+   private String email;
     private String name;
     private String surname;
-    private String email;
+
     private String address;
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations;
-
-
+    private String role;
+    private String password;
     public Client(String name, String surname, String email, String address) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.address = address;
+    }
+
+    public Client(String name, String surname, String email, String address, String role, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.address = address;
+        this.role = role;
+        this.password = password;
     }
 }

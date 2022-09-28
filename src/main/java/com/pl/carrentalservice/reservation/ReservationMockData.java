@@ -6,6 +6,7 @@ import com.pl.carrentalservice.cars.CarMockData;
 import com.pl.carrentalservice.clients.Client;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -15,9 +16,9 @@ public class ReservationMockData {
     List<Car>cars;
     List<Client> clients;
 
-    //@PostConstruct
-//    public List<Reservation> initiateReservationData(){
-//        return List.of(
-//                new Reservation(26.09, 29.09, 30.09, cars.get(0), clients.get(0), "NewYork", "Chicago", carMockData.getCarPrice(0)));
-//    }
+    @PostConstruct
+    public List<Reservation> initiateReservationData(){
+        return List.of(
+                new Reservation(LocalDate.of(2022,9,26), LocalDate.of(2022, 9, 29), LocalDate.of(2022, 9, 31), cars.get(0), clients.get(0), "NewYork", "Chicago", carMockData.getCarPrice(0)));
+    }
 }
