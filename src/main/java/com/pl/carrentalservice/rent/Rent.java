@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Rent {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "employee_id")

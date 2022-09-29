@@ -16,7 +16,9 @@ public class CarService {
     public void addCars(List <Car> cars) { repository.saveAll(cars);}
 
     public void saveCars(List<Car> cars) {
+//        entityManager.getTransaction().begin();
         repository.saveAll(cars);
+//        entityManager.getTransaction().commit();
     }
 
 

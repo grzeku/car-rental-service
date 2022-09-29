@@ -22,7 +22,7 @@ import java.util.UUID;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     //@Type(type = "uuid-char")
     @Column(name="employee_id")
     private Long id;
