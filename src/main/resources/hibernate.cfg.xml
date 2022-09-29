@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">sql11.freesqldatabase.com:3306</property>
+        <property name="connection.url">jdbc:mysql://sql11.freesqldatabase.com:3306/sql11522865</property>
         <property name="connection.username">sql11522865</property>
         <property name="connection.password">JEm6dnjui5</property>
         <property name="connection.pool_size">5</property>
