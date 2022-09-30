@@ -23,10 +23,6 @@ public class Branch {
     @JoinColumn(name = "address_id")
     private BranchAddress branchAddress;
 
-
-   // @OneToMany(mappedBy = "carsAvailableAtBranch")
-  //  private List<BranchCars> branchCars; // list?
-
     public Branch(long id, BranchAddress branchAddress) {
     }
 }
