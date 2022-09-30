@@ -17,4 +17,9 @@ public class BranchService {
     public List<Branch> getAll() {
         return branchRepository.findAll();
     }
+
+    public void saveBranches(List<Branch> branches) {
+        log.debug("Saving list of branches");
+        branchRepository.saveAll(branches);
+    }
 }

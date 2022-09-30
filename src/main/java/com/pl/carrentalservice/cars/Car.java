@@ -1,5 +1,6 @@
 package com.pl.carrentalservice.cars;
 
+import com.pl.carrentalservice.branches.Branch;
 import com.pl.carrentalservice.reservation.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +35,12 @@ public class Car {
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Branch startBranch;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Branch endBranch;
 
     public Car(String make, String model, BodyStyle bodyStyle, Integer productionYear, Integer mileage, CarAvailabilityStatus carAvailabilityStatus, Integer price) {
         this.make = make;
@@ -56,4 +63,5 @@ public class Car {
         this.price = price;
     }
 }
+
 
