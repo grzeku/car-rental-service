@@ -1,5 +1,6 @@
 package com.pl.carrentalservice.employees;
 
+import com.pl.carrentalservice.branches.Branch;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -19,12 +20,12 @@ public class EmployeeMockData {
     @PostConstruct
     void saveMockEmployees() {
         List<Employee> employees = List.of(
-                new Employee(1L, "Adam", "Małysz", EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST ),
-                new Employee(2L, "Anna", "Dymna", EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST),
-                new Employee(3L, "Mateusz", "Ochal", EmployeePosition.MANAGER,  Collections.EMPTY_LIST,Collections.EMPTY_LIST),
-                new Employee(4L, "Grzegorz", "Kuczera", EmployeePosition.MANAGER,  Collections.EMPTY_LIST,Collections.EMPTY_LIST),
-                new Employee(5L, "Mateusz", "Ochal", EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST),
-                new Employee(6L, "Mateusz", "Ochal", EmployeePosition.EMPLOYEE,  Collections.EMPTY_LIST,Collections.EMPTY_LIST));
+                new Employee(1L, "Adam", "Małysz", new Branch(),  EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST ),
+                new Employee(2L, "Anna", "Dymna",new Branch(),  EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST),
+                new Employee(3L, "Mateusz", "Ochal",new Branch(), EmployeePosition.MANAGER,  Collections.EMPTY_LIST,Collections.EMPTY_LIST),
+                new Employee(4L, "Grzegorz", "Kuczera",new Branch(),  EmployeePosition.MANAGER,  Collections.EMPTY_LIST,Collections.EMPTY_LIST),
+                new Employee(5L, "Mateusz", "Ochal",new Branch(),  EmployeePosition.EMPLOYEE, Collections.EMPTY_LIST,Collections.EMPTY_LIST),
+                new Employee(6L, "Mateusz", "Ochal",new Branch(),  EmployeePosition.EMPLOYEE,  Collections.EMPTY_LIST,Collections.EMPTY_LIST));
         service.saveEmployees(employees);
     }
 }
