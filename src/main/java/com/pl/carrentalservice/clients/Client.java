@@ -17,20 +17,14 @@ public class Client {
    @Id
    @Column(unique = true, name = "client_id")
    private String email;
-   @Column
     private String name;
-    @Column
     private String surname;
-    @Column
+
     private String address;
-    @Column
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations;
-    @Column
     private String role;
-    @Column
     private String password;
-
     public Client(String name, String surname, String email, String address) {
         this.name = name;
         this.surname = surname;

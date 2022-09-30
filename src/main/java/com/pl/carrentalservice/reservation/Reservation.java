@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Reservation {
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+@GeneratedValue
 @Column(name = "reservation_id")
     private Integer id;
 
