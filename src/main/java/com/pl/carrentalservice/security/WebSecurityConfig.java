@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
         http.authorizeRequests()
-                .antMatchers("/", "/h2-console/**", "/webjars/**", "/clients").permitAll()
+                .antMatchers("/**", "/h2-console/**", "/webjars/**", "/clients").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

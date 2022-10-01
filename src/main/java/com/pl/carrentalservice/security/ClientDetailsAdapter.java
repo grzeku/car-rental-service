@@ -27,7 +27,7 @@ public class ClientDetailsAdapter implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return client.getEmail();
     }
 
 

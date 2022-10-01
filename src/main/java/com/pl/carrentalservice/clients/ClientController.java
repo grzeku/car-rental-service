@@ -1,9 +1,12 @@
 package com.pl.carrentalservice.clients;
 
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,11 +19,19 @@ public class ClientController {
 private final ClientService service;
 
     @GetMapping("/list")
-    public List<Client> getAll(){
-    log.info("All clients requested");
-    return service.getAll();
-    }
+    String getClients(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size, Model model) {
+        Page<Client> clientPage = service.findPage(page, size);
+        List<Client> clients = clientPage.getContent();
+        List<Integer> sizes = List.of(5, 10, 20);
 
+        model.addAttribute("size", size);
+        model.addAttribute("sizes", sizes);
+        model.addAttribute("clients", clients);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", clientPage.getTotalPages());
+        model.addAttribute("totalElements", clientPage.getTotalElements());
+        return "clients/list";
+    }
     @PostMapping("/addclient")
     public void addClient (@RequestBody Client client){
         log.info("Received post request");
