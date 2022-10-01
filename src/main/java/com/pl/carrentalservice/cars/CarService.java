@@ -1,6 +1,8 @@
 package com.pl.carrentalservice.cars;
 
+import com.pl.carrentalservice.branches.Branch;
 import com.pl.carrentalservice.util.HibernateUtil;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.springframework.data.domain.Page;
@@ -8,10 +10,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Data
 public class CarService {
     final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     final EntityManager entityManager = sessionFactory.createEntityManager();
@@ -32,4 +37,12 @@ public class CarService {
         PageRequest pageRequest = PageRequest.of(number - 1, size);
         return repository.findAll(pageRequest);
     }
+
+    List<Car> carsAvailableAtBranch(Branch branch) {
+        List<Car> cars = new ArrayList<>();
+        return cars.stream().filter(car -> car.getEndBranch().equals(branch))
+                .collect(Collectors.toList());
+    }
+
+
 }

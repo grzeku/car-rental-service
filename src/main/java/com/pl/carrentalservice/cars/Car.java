@@ -62,6 +62,18 @@ public class Car {
         this.carAvailabilityStatus = carAvailabilityStatus;
         this.price = price;
     }
+
+    public Car(String make, String model, BodyStyle bodyStyle, Integer productionYear, Integer mileage, CarAvailabilityStatus carAvailabilityStatus, Integer price, Branch startBranch, Branch endBranch) {
+        this.make = make;
+        this.model = model;
+        this.bodyStyle = bodyStyle;
+        this.productionYear = productionYear;
+        this.mileage = mileage;
+        this.carAvailabilityStatus = carAvailabilityStatus;
+        this.price = price;
+        this.startBranch = startBranch;
+        this.endBranch = endBranch;
+    }
 }
 
 

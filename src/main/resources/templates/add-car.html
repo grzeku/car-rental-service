@@ -46,6 +46,16 @@
       <input class="form-control" id="price" placeholder="Price" th:field="*{price}" type="text">
       <span class="text-danger" th:errors="*{price}" th:if="${#fields.hasErrors('price')}"></span>
     </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="startBranch">startBranch</label>
+      <input class="form-control" id="startBranch" placeholder="Price" th:field="*{startBranch}" type="text">
+      <span class="text-danger" th:errors="*{startBranch}" th:if="${#fields.hasErrors('startBranch')}"></span>
+    </div>
+    <div class="form-group col-md-6">
+      <label class="col-form-label" for="endBranch">endBranch</label>
+      <input class="form-control" id="endBranch" placeholder="endBranch" th:field="*{endBranch}" type="text">
+      <span class="text-danger" th:errors="*{endBranch}" th:if="${#fields.hasErrors('endBranch')}"></span>
+    </div>
 
     <button class="btn btn-warning mt-2" type="submit">Submit</button>
   </form>

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "Branches")
@@ -19,10 +19,19 @@ public class Branch {
     @Column(name = "branch_id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     private BranchAddress branchAddress;
 
-    public Branch(long id, BranchAddress branchAddress) {
-    }
+
+
+
+//    List<Car> carsAvailableAtBranch(Branch branch) {
+//        List<Car> cars = new ArrayList<>();
+//        return cars.stream().filter(car -> car.getEndBranch().equals(branch))
+//                .collect(Collectors.toList());
+//    }
+public Branch (BranchAddress branchAddress){
+    this.branchAddress = branchAddress;
+}
 }
