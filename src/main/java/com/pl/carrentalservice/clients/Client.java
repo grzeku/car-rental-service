@@ -40,4 +40,12 @@ public class Client {
         this.role = role;
         this.password = password;
     }
+
+    public Client(String name,String surname, String email, String role, String password) {
+        this.name = name;
+        this.surname=surname;
+        this.role = role;
+        this.email=email;
+        this.password = password;
+    }
 }

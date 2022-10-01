@@ -1,7 +1,10 @@
 package com.pl.carrentalservice.clients;
 
 
+import com.pl.carrentalservice.cars.Car;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,7 @@ public class ClientService {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
     }
+
     public void add(CreateClientRequest request) {
         Client client = mapToClient(request);
         repository.save(client);
@@ -39,12 +43,13 @@ public class ClientService {
                 passwordEncoder.encode(request.getPassword()));
 
     }
+
     public List<Client> getAll() {
-    return repository.findAll();
+        return repository.findAll();
     }
 
-     void addClients(List<Client> clients) {
-         repository.saveAll(clients);
+    void addClients(List<Client> clients) {
+        repository.saveAll(clients);
     }
 
     public Client findByEmail(String email) {
@@ -52,4 +57,10 @@ public class ClientService {
                 .findById(email)
                 .orElseThrow(() -> new UsernameNotFoundException(email + " was not found"));
     }
+
+    public Page<Client> findPage(int number, int size) {
+        PageRequest pageRequest = PageRequest.of(number - 1, size);
+        return repository.findAll(pageRequest);
     }
+}
+

@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "BranchAddress")
+@Component
+@Table
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

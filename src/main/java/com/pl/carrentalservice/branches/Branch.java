@@ -26,12 +26,12 @@ public class Branch {
 
 
 
-//    List<Car> carsAvailableAtBranch(Branch branch) {
+    //    List<Car> carsAvailableAtBranch(Branch branch) {
 //        List<Car> cars = new ArrayList<>();
 //        return cars.stream().filter(car -> car.getEndBranch().equals(branch))
 //                .collect(Collectors.toList());
 //    }
-public Branch (BranchAddress branchAddress){
-    this.branchAddress = branchAddress;
-}
+    public Branch (BranchAddress branchAddress){
+        this.branchAddress = branchAddress;
+    }
 }

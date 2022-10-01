@@ -20,7 +20,7 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="car_id")
     private Long id;
-@Column
+    @Column
     private String make;
     private String model;
     //TODO enum here

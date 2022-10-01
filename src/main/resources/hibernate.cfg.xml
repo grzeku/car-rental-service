@@ -22,5 +22,6 @@
         <mapping class="com.pl.carrentalservice.employees.Employee"/>
         <mapping class="com.pl.carrentalservice.rent.Rent"/>
         <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
+        <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
     </session-factory>
 </hibernate-configuration>
