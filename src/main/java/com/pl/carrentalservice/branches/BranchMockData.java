@@ -6,6 +6,8 @@ import com.pl.carrentalservice.cars.CarAvailabilityStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -13,9 +15,17 @@ import java.util.List;
 public class BranchMockData {
 
     private final BranchService branchService;
+    List<Branch> branches = new ArrayList<>();
 
-    List<Branch> branches = List.of(
-            new Branch(1L, new BranchAddress(1L, "Wyzwolenia", 33, 44200, "Rybnik")));
+    @PostConstruct
+    void saveMockBranches() {
+        new Branch(1L, new BranchAddress(1L, "Wyzwolenia", 33, 44200, "Rybnik"));
+        branchService.saveBranches(branches);
+    }
+
+
+
+
 
 }
 
