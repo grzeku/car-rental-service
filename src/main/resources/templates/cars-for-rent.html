@@ -21,14 +21,16 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th><p>make</p></th>
+
       <th><p>model</p></th>
       <th><p>bodyStyle</p></th>
       <th><p>productionYear</p></th>
       <th><p>mileage</p></th>
       <th><p>carAvailabilityStatus</p></th>
       <th><p>price</p></th>
-<!--      <th sec:authorize="hasRole('ADMIN')"><p>actions</p></th>-->
+      <th><p>startBranch</p></th>
+      <th><p>endBranch</p></th>
+      <th sec:authorize="hasRole('ADMIN')"><p>actions</p></th>
     </tr>
     </thead>
     <tbody>
@@ -40,7 +42,9 @@
       <td th:text="${car.getMileage()}"></td>
       <td th:text="${car.getCarAvailabilityStatus()}"></td>
       <td th:text="${car.getPrice()}"></td>
-<!--      <td sec:authorize="hasRole('ADMIN')">-->
+      <td th:text="${car.getStartBranch()}"></td>
+      <td th:text="${car.getEndBranch()}"></td>
+      <td sec:authorize="hasRole('ADMIN')">
         <a class="btn btn-success btn-sm"
            th:href="@{'/update-employee-form/' + ${car.id}}">Update</a>
         <a class="btn btn-danger btn-sm"
