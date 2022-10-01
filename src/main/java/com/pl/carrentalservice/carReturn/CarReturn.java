@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class CarReturn {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     @ManyToOne
     @JoinColumn(name="employee_id")
     private  Employee employee;

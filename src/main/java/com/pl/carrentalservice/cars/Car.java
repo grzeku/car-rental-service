@@ -19,7 +19,7 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="car_id")
-    private Long id;
+    private Integer id;
     @Column
     private String make;
     private String model;
@@ -52,7 +52,7 @@ public class Car {
         this.price = price;
     }
 
-    public Car(Long id, String make, String model, BodyStyle bodyStyle, Integer productionYear, Integer mileage, CarAvailabilityStatus carAvailabilityStatus, Integer price) {
+    public Car(Integer id, String make, String model, BodyStyle bodyStyle, Integer productionYear, Integer mileage, CarAvailabilityStatus carAvailabilityStatus, Integer price) {
         this.id = id;
         this.make = make;
         this.model = model;

@@ -17,7 +17,7 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "branch_id")
-    private Long id;
+    private Integer id;
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
