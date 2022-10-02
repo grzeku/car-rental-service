@@ -9,7 +9,7 @@
 <body>
 <div th:insert="fragments/navbar :: navbar"></div>
 <div class="container my-5">
-  <h2>Add new employee</h2>
+  <h2>Add new car</h2>
   <hr>
   <form method="post" th:action="@{/add-car}" th:object="${car}">
     <div class="form-group col-md-6">
@@ -29,7 +29,7 @@
     </div>
     <div class="form-group col-md-6">
       <label class="col-form-label" for="productionYear">Production Year</label>
-      <input class="form-control" id="productionYear" placeholder="productionYear" th:field="*{productionYear}" type="text">
+      <input class="form-control" id="productionYear" placeholder="Production Year" th:field="*{productionYear}" type="text">
     </div>
     <div class="form-group col-md-6">
       <label class="col-form-label" for="mileage">Mileage</label>
@@ -47,13 +47,13 @@
       <span class="text-danger" th:errors="*{price}" th:if="${#fields.hasErrors('price')}"></span>
     </div>
 <!--    <div class="form-group col-md-6">-->
-<!--      <label class="col-form-label" for="startBranch">startBranch</label>-->
-<!--      <input class="form-control" id="startBranch" placeholder="Price" th:field="*{startBranch}" type="text">-->
+<!--      <label class="col-form-label" for="startBranch">Start Branch</label>-->
+<!--      <input class="form-control" id="startBranch" placeholder="Start branch" th:field="*{startBranch}" type="text">-->
 <!--      <span class="text-danger" th:errors="*{startBranch}" th:if="${#fields.hasErrors('startBranch')}"></span>-->
 <!--    </div>-->
 <!--    <div class="form-group col-md-6">-->
-<!--      <label class="col-form-label" for="endBranch">endBranch</label>-->
-<!--      <input class="form-control" id="endBranch" placeholder="endBranch" th:field="*{endBranch}" type="text">-->
+<!--      <label class="col-form-label" for="endBranch">End Branch</label>-->
+<!--      <input class="form-control" id="endBranch" placeholder="End branch" th:field="*{endBranch}" type="text">-->
 <!--      <span class="text-danger" th:errors="*{endBranch}" th:if="${#fields.hasErrors('endBranch')}"></span>-->
 <!--    </div>-->
 
