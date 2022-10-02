@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,16 +22,20 @@ public class CarService {
     final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     final EntityManager entityManager = sessionFactory.createEntityManager();
     private final CarRepository repository;
-    public List<Car> getAll() { return repository.findAll();}
 
-    public void addCars(List <Car> cars) { repository.saveAll(cars);}
+    public List<Car> getAll() {
+        return repository.findAll();
+    }
+
+    public void addCars(List<Car> cars) {
+        repository.saveAll(cars);
+    }
 
     public void saveCars(List<Car> cars) {
-         entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
         repository.saveAll(cars);
         entityManager.getTransaction().commit();
     }
-
 
 
     public Page<Car> findPage(int number, int size) {
@@ -48,8 +53,14 @@ public class CarService {
     public void saveCar(Car car) {
         entityManager.getTransaction().begin();
         entityManager.persist(car);
-        repository.save(car);
 
         entityManager.getTransaction().commit();
+    }
+
+    public Car findById(Integer id) {
+
+        return repository
+                .findById(id)
+                .orElseThrow(NoSuchElementException::new);
     }
 }

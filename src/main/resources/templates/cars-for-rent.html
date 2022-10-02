@@ -13,7 +13,7 @@
     <h2>Car list</h2>
 
 
-    <a class="btn btn-primary btn-sm mb-3" th:href="@{/car-for-rent}">Add
+    <a class="btn btn-primary btn-sm mb-3" th:href="@{/add-car-form}">Add
         car</a>
     <!--  </div>-->
 
@@ -46,9 +46,9 @@
             <td th:text="${car.getEndBranch()}"></td>
             <td sec:authorize="hasRole('ADMIN')">
                 <a class="btn btn-success btn-sm"
-                   th:href="@{'/update-employee-form/' + ${car.id}}">Update</a>
+                   th:href="@{'/update-car-form/' + ${car.id}}">Update</a>
                 <a class="btn btn-danger btn-sm"
-                   th:href="@{'/delete-employee/' + ${car.id}}">Delete</a>
+                   th:href="@{'/delete-car/' + ${car.id}}">Delete</a>
             </td>
         </tr>
         </tbody>
