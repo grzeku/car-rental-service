@@ -14,7 +14,7 @@ import java.util.List;
 
 @Entity
 @Component
-@Table
+@Table(name="branch_address")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,12 +22,14 @@ public class BranchAddress {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
-    private Long id;
+    private Integer id;
 
     private String street;
+    @Column(name="street_number")
     private int streetNumber;
+    @Column(name="postal_code")
     private int postalCode;
     private String city;
 

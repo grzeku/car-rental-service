@@ -2,10 +2,7 @@ package com.pl.carrentalservice;
 
 import com.pl.carrentalservice.branches.Branch;
 import com.pl.carrentalservice.branches.BranchAddress;
-import com.pl.carrentalservice.cars.BodyStyle;
-import com.pl.carrentalservice.cars.Car;
-import com.pl.carrentalservice.cars.CarAvailabilityStatus;
-import com.pl.carrentalservice.cars.CarService;
+import com.pl.carrentalservice.cars.*;
 import com.pl.carrentalservice.clients.Client;
 import com.pl.carrentalservice.util.HibernateUtil;
 import org.hibernate.SessionFactory;
@@ -14,11 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManager;
 import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class CarRentalServiceApplication {
     private static CarService carService;
-
+    private static CarController controller;
     final static SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     final static EntityManager entityManager = sessionFactory.createEntityManager();
 

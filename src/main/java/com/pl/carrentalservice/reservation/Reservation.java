@@ -13,17 +13,20 @@ import java.time.LocalDate;
 
 @Entity
 @Data
+@Table(name="reservations")
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reservation {
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 @Column(name = "reservation_id")
     private Integer id;
-
+    @Column(name="date_of_reservation")
     private LocalDate dateOfReservation;
+    @Column(name="date_of_pickup")
     private LocalDate dateOfPickUp;
+    @Column(name="date_of_return")
     private LocalDate dateOfReturn;
     @OneToOne(cascade = CascadeType.ALL )
     @JoinColumn(name="car_id")
@@ -31,8 +34,11 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name="client_id")
     private Client client;
+    @Column(name="branch_start")
     private String branchStart;
+    @Column(name="branch_end")
     private String branchEnd;
+    @Column(name="price_per_day")
     private Integer pricePerDay;
 
 

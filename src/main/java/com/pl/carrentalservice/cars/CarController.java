@@ -2,11 +2,13 @@ package com.pl.carrentalservice.cars;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -16,6 +18,8 @@ import java.util.List;
 @Slf4j
 public class CarController {
     private final CarService service;
+    @Autowired
+    private CarRepository repo;
     @GetMapping
     String index() {
         return "index";
@@ -24,8 +28,10 @@ public class CarController {
 
     @GetMapping("/list")
         public List<Car> getAll(){
+
             log.info("All cars requested");
             return service.getAll();
+
     }
 
 
@@ -53,6 +59,8 @@ String getCars(@RequestParam(defaultValue = "1") int page, @RequestParam(default
 
     return "cars-for-rent";
 }
+
+
     @GetMapping("/add-car-form")
     String addEmployeeForm(final Model model) {
         Car car = new Car();

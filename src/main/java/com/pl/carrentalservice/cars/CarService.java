@@ -26,9 +26,9 @@ public class CarService {
     public void addCars(List <Car> cars) { repository.saveAll(cars);}
 
     public void saveCars(List<Car> cars) {
-        // entityManager.getTransaction().begin();
+         entityManager.getTransaction().begin();
         repository.saveAll(cars);
-        //entityManager.getTransaction().commit();
+        entityManager.getTransaction().commit();
     }
 
 
@@ -48,7 +48,7 @@ public class CarService {
     public void saveCar(Car car) {
         entityManager.getTransaction().begin();
         entityManager.persist(car);
-       // repository.save(car);
+        repository.save(car);
 
         entityManager.getTransaction().commit();
     }

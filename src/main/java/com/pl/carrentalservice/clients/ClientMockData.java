@@ -12,18 +12,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientMockData {
     private final ClientService service;
-    @PostConstruct
-    public void  initiateClientData() {
-        List<Client>clients = List.of(
-            createClient("Mati", "Hautameki", "MatiHautameki@gmail.com", "Sweden, Oslo"),
-            createClient("Jane", "Happonen", "JaneHapponen@gmail.com", "Sweden, Oslo"),
-            createClient("Adam", "Malysz", "AdamMalysz@gmail.com", "Polska, Wisla"),
-            createClient("Piotr", "Zyla", "PiotrZyla@gmail.com", "Polska, Istebna"));
-
-        service.addClients(clients);
-        Client admin = new Client("jaja","szwaja", "kapa@gmail.com","ADMIN", "jaja");
-        service.addClients(List.of(admin));
-    }
+//    @PostConstruct
+//    public void  initiateClientData() {
+//        List<Client>clients = List.of(
+//            createClient("Mati", "Hautameki", "MatiHautameki@gmail.com", "Sweden, Oslo"),
+//            createClient("Jane", "Happonen", "JaneHapponen@gmail.com", "Sweden, Oslo"),
+//            createClient("Adam", "Malysz", "AdamMalysz@gmail.com", "Polska, Wisla"),
+//            createClient("Piotr", "Zyla", "PiotrZyla@gmail.com", "Polska, Istebna"));
+//
+//        service.addClients(clients);
+//        Client admin = new Client("jaja","szwaja", "kapa@gmail.com","ADMIN", "jaja");
+//        service.addClients(List.of(admin));
+   // }
     public Client createClient(String name, String surname, String email, String address){
         return new Client(name, surname, email, address);
 

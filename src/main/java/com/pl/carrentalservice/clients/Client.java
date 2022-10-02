@@ -10,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "clients")
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
 
