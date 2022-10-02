@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Cars")
+@Table(name = "cars")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,22 +24,25 @@ public class Car {
     private String make;
     private String model;
     //TODO enum here
+    @Column(name="body_style")
     @Enumerated(EnumType.STRING)
     private BodyStyle bodyStyle ;
+    @Column(name="production_year")
     private Integer productionYear;
     private Integer mileage;
+    @Column(name="car_availibility_status")
     @Enumerated(EnumType.STRING)
     private CarAvailabilityStatus carAvailabilityStatus;
     private Integer price;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="start_branch")
+    private Branch startBranch;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Branch startBranch;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn
+    @JoinColumn(name="end_branch")
     private Branch endBranch;
 
     public Car(String make, String model, BodyStyle bodyStyle, Integer productionYear, Integer mileage, CarAvailabilityStatus carAvailabilityStatus, Integer price) {

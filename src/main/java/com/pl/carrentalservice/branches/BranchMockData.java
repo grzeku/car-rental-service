@@ -19,7 +19,7 @@ public class BranchMockData {
 
     @PostConstruct
     void saveMockBranches() {
-        new Branch(1L, new BranchAddress(1L, "Wyzwolenia", 33, 44200, "Rybnik"));
+        new Branch(new BranchAddress(1, "Wyzwolenia", 33, 44200, "Rybnik"));
         branchService.saveBranches(branches);
     }
 

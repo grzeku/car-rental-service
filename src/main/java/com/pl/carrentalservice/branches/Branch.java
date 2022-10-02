@@ -8,14 +8,14 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "Branches")
+@Table(name = "branches")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Branch {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "branch_id")
     private Integer id;
 
