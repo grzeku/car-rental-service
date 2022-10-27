@@ -17,13 +17,11 @@ import java.util.List;
 @Slf4j
 public class ClientController {
 private final ClientService service;
-
     @GetMapping("/list")
     String getClients(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size, Model model) {
         Page<Client> clientPage = service.findPage(page, size);
         List<Client> clients = clientPage.getContent();
         List<Integer> sizes = List.of(5, 10, 20);
-
         model.addAttribute("size", size);
         model.addAttribute("sizes", sizes);
         model.addAttribute("clients", clients);
@@ -37,13 +35,11 @@ private final ClientService service;
         log.info("Received post request");
          service.addClients(List.of(client));
     }
-
     @GetMapping
     String registrationTemplate(final Model model) {
         model.addAttribute("client", new CreateClientRequest());
         return "registration";
     }
-
     @PostMapping
     String register(@ModelAttribute CreateClientRequest request) {
         log.info("Received request to register {}", request.getEmail());

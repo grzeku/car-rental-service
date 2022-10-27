@@ -41,7 +41,6 @@ public class Reservation {
     @Column(name="price_per_day")
     private Integer pricePerDay;
 
-
     public Reservation(LocalDate dateOfReservation, LocalDate dateOfPickUp, LocalDate dateOfReturn, Car car, Client client, String branchStart, String branchEnd, Integer pricePerDay) {
         this.dateOfReservation = dateOfReservation;
         this.dateOfPickUp = dateOfPickUp;

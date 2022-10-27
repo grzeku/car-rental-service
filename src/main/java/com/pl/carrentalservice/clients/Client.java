@@ -20,7 +20,6 @@ public class Client {
    private String email;
     private String name;
     private String surname;
-
     private String address;
     @OneToMany(mappedBy = "client")
     private List<Reservation> reservations;
@@ -32,7 +31,6 @@ public class Client {
         this.email = email;
         this.address = address;
     }
-
     public Client(String name, String surname, String email, String address, String role, String password) {
         this.name = name;
         this.surname = surname;
@@ -41,7 +39,6 @@ public class Client {
         this.role = role;
         this.password = password;
     }
-
     public Client(String name,String surname, String email, String role, String password) {
         this.name = name;
         this.surname=surname;

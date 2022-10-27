@@ -34,7 +34,6 @@ public class CarMockData {
     public Integer getCarPrice( int index){
          Car car = cars.get(index);
         return car.getPrice();
-
     }
     public void add(Car car){
         cars.add(car);
