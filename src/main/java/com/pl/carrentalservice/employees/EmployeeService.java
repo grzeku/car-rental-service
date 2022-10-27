@@ -10,7 +10,6 @@ import java.util.List;
 @Slf4j
 public class EmployeeService {
 
-
     private final EmployeeRepository repository;
     public List<Employee> getAll() {
         return repository.findAll();
@@ -20,7 +19,6 @@ public class EmployeeService {
         log.debug("Saving list of employees");
         repository.saveAll(employees);
     }
-
     public void add(Employee employee) {
         log.debug("Adding employee");
         repository.save(employee);

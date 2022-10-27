@@ -21,7 +21,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
@@ -33,9 +32,11 @@ public class Employee {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "branch_id")
     private Branch branch;
+
     @Column(name="employee_position")
-    @Enumerated(EnumType.STRING) // czy to potrzebne
+    @Enumerated(EnumType.STRING)
     private EmployeePosition employeePositionEnum;
+
     @Column(name="car_returns")
     @OneToMany(mappedBy = "employee")
     private List<CarReturn> carReturns;

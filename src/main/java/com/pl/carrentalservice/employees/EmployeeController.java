@@ -11,19 +11,15 @@ import java.util.List;
 @RequestMapping("/employees")
 @Slf4j
 public class EmployeeController {
-
     private final EmployeeService service;
-
     @GetMapping
     List<Employee> getAllEmployess() {
         log.info("Getting a list of all employees");
         return service.getAll();
     }
-
     @PostMapping
     void addEmployee(@RequestBody Employee employee) {
         log.info("Adding employee");
         service.add(employee);
     }
-
 }

@@ -12,10 +12,8 @@ import java.util.List;
 @Data
 public class ReservationMockData {
     private final CarMockData carMockData;
-
     List<Car>cars;
     List<Client> clients;
-
     @PostConstruct
     public List<Reservation> initiateReservationData(){
         return List.of(

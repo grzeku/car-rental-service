@@ -21,7 +21,7 @@ import java.util.List;
 @Slf4j
 public class CarController {
     private final CarService service;
-    @Autowired
+    //    @Autowired
     private CarRepository repo;
 
     final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -48,10 +48,13 @@ public class CarController {
         service.saveCars(List.of(car));
     }
 
-    //    @PutMapping
-//
-//
-//    @DeleteMapping
+
+    @RequestMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable Integer id) {
+        service.delete(id);
+        return "redirect:/cars";
+    }
+
     @GetMapping("/cars")
     String getCars(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size, Model model) {
         Page<Car> carPage = service.findPage(page, size);
@@ -67,7 +70,6 @@ public class CarController {
 
         return "cars-for-rent";
     }
-
 
     @GetMapping("/add-car-form")
     String addEmployeeForm(final Model model) {
@@ -86,7 +88,6 @@ public class CarController {
         service.saveCar(car);
         log.info("Requested car add");
         return "redirect:/cars";
-
     }
 
     @GetMapping("/update-car-form/{id}")
@@ -102,19 +103,8 @@ public class CarController {
         if (result.hasErrors()) {
             return "update-car-form";
         }
-
-
-        entityManager.getTransaction().begin();
-        entityManager.persist(car);
-        entityManager.getTransaction().commit();
-
+        service.update(car);
         return "redirect:/cars-for-rent";
     }
-
-    @GetMapping("/delete-car/{id}")
-    String deleteCar(@PathVariable Integer id) {
-        service.findById(id);
-        return "redirect:/cars-for-rent";
-    }
-
 }
+

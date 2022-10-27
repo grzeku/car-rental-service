@@ -36,31 +36,30 @@ public class CarService {
         repository.saveAll(cars);
         entityManager.getTransaction().commit();
     }
-
-
     public Page<Car> findPage(int number, int size) {
         PageRequest pageRequest = PageRequest.of(number - 1, size);
         return repository.findAll(pageRequest);
     }
-
     List<Car> carsAvailableAtBranch(Branch branch) {
         List<Car> cars = new ArrayList<>();
         return cars.stream().filter(car -> car.getEndBranch().equals(branch))
                 .collect(Collectors.toList());
     }
-
-
     public void saveCar(Car car) {
         entityManager.getTransaction().begin();
         entityManager.persist(car);
-
         entityManager.getTransaction().commit();
     }
-
     public Car findById(Integer id) {
 
         return repository
                 .findById(id)
                 .orElseThrow(NoSuchElementException::new);
+    }
+    public void update(Car car){
+        repository.save(car);
+    }
+    public void delete(Integer id) {
+        repository.deleteById(id);
     }
 }

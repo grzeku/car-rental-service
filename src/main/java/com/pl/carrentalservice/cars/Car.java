@@ -23,7 +23,6 @@ public class Car {
     @Column
     private String make;
     private String model;
-    //TODO enum here
     @Column(name="body_style")
     @Enumerated(EnumType.STRING)
     private BodyStyle bodyStyle ;
@@ -34,14 +33,14 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private CarAvailabilityStatus carAvailabilityStatus;
     private Integer price;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="start_branch")
     private Branch startBranch;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="end_branch")
     private Branch endBranch;
 

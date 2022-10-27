@@ -22,16 +22,7 @@ public class Branch {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "address_id")
     private BranchAddress branchAddress;
-
-
-
-
-    //    List<Car> carsAvailableAtBranch(Branch branch) {
-//        List<Car> cars = new ArrayList<>();
-//        return cars.stream().filter(car -> car.getEndBranch().equals(branch))
-//                .collect(Collectors.toList());
-//    }
-    public Branch (BranchAddress branchAddress){
+    public Branch(BranchAddress branchAddress) {
         this.branchAddress = branchAddress;
     }
 }
