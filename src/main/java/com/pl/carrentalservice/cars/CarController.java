@@ -21,7 +21,6 @@ import java.util.List;
 @Slf4j
 public class CarController {
     private final CarService service;
-    //    @Autowired
     private CarRepository repo;
 
     final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -72,7 +71,7 @@ public class CarController {
     }
 
     @GetMapping("/add-car-form")
-    String addEmployeeForm(final Model model) {
+    String addCarForm(final Model model) {
         Car car = new Car();
         model.addAttribute("car", car);
 
@@ -81,7 +80,7 @@ public class CarController {
     }
 
     @PostMapping("/add-car")
-    String addEmployee(@Valid Car car, BindingResult result) {
+    String addCar(@Valid Car car, BindingResult result) {
         if (result.hasErrors()) {
             return "add-car";
         }
@@ -106,5 +105,6 @@ public class CarController {
         service.update(car);
         return "redirect:/cars-for-rent";
     }
+
 }
 
