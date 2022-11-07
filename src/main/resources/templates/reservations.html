@@ -37,10 +37,10 @@
             <td th:text="${reservation.getDateOfReservation()}"></td>
             <td th:text="${reservation.getDateOfPickUp()}"></td>
             <td th:text="${reservation.getDateOfReturn()}"></td>
-            <td th:text="${reservation.getCar()}"></td>
+            <td th:text="${reservation.getCar().getMake() + ' ,' + reservation.getCar().getModel() + ' ,' + }"></td>
             <td th:text="${reservation.getClient()}"></td>
-            <td th:text="${reservation.getBranchStart()}"></td>
-            <td th:text="${reservation.getBranchEnd()}"></td>
+            <td th:text="${reservation.getBranchStart().getBranchAddress().getCity() + ' ,' + reservation.getBranchStart().getBranchAddress().getStreet()}"></td>
+            <td th:text="${reservation.getBranchEnd().getBranchAddress().getCity()+ ' ,' + reservation.getBranchEnd().getBranchAddress().getStreet()}"></td>
             <td th:text="${reservation.getPricePerDay()}"></td>
             <td sec:authorize="hasAnyRole('USER','ADMIN')">
                 <a class="btn btn-success btn-sm"
