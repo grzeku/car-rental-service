@@ -5,6 +5,7 @@ import com.pl.carrentalservice.branches.BranchAddress;
 import com.pl.carrentalservice.branches.BranchRepository;
 import com.pl.carrentalservice.branches.BranchService;
 import com.pl.carrentalservice.cars.Car;
+import com.pl.carrentalservice.cars.CarRepository;
 import com.pl.carrentalservice.util.HibernateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,9 +34,9 @@ public class ReservationController {
     private final ReservationService service;
     private final ReservationRepository repository;
     private final BranchRepository branchRepository;
+    private final CarRepository carRepository;
 
-    final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    final EntityManager entityManager = sessionFactory.createEntityManager();
+
 
     @GetMapping("/reservations")
     String getReservations(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size, Model model) {
@@ -58,9 +59,11 @@ public class ReservationController {
     String addReservationForm(final Model model) {
         Reservation reservation = new Reservation();
         List<Branch> branches = branchRepository.findAll();
+        List<Car> cars = carRepository.findAll();
         BranchAddress branchAddress = new BranchAddress();
         model.addAttribute("reservation", reservation);
         model.addAttribute("branches", branches);
+        model.addAttribute("cars", cars);
 //        model.addAttribute("branchAddresses", branchAddress);
 
         return "make-a-reservation";
@@ -68,7 +71,7 @@ public class ReservationController {
     }
 
     @PostMapping("/make-a-reservation")
-    String addReservation(@Valid Reservation reservation, BindingResult result) {
+    String addReservation(@Valid Reservation reservation, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "make-a-reservation";
         }

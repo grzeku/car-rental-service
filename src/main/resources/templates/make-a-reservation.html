@@ -27,49 +27,30 @@
             <input class="form-control" id="dateOfReturn" placeholder="dateOfReturn" th:field="*{dateOfReturn}" type="text">
             <span class="text-danger" th:errors="*{dateOfReturn}" th:if="${#fields.hasErrors('dateOfReturn')}"></span>
         </div>
-<!--        <div class="form-group col-md-6">-->
-<!--            <label class="col-form-label" for="car">car</label>-->
-<!--            <input class="form-control" id="car" placeholder="Car" th:field="*{car}" type="text">-->
-<!--        </div>-->
 
-<!--            <a class="col-form-label" for="branch">branch</a>-->
-            <select th:field="*{branchStart}" >
-                <option value="" selected>----SELECT CITY----</option>
-                <option th:each="branch : ${branches}" th:value="${branch}" th:text="${branch}"></option>
+        <div class="form-group col-md-6">
+            <label class="control-label" for="car">car</label>
+            <select class="form-control" id="car" th:field="*{car.id}">
+                <option value="" selected>----SELECT CAR----</option>
+                <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
             </select>
+        </div>
 
+        <div class="form-group col-md-6">
+            <label class="control-label" for="branchStart">branchStart</label>
+            <select class="form-control" id="branchStart" th:field="*{branchStart}">
+                <option value="" selected>----SELECT START CITY----</option>
+                <option th:each="branch : ${branches}" th:value="${branch.id}" th:text="${branch.branchAddress}"></option>
+            </select>
+        </div>
 
         <div class="form-group col-md-6">
             <label class="control-label" for="branchEnd">branchEnd</label>
             <select class="form-control" id="branchEnd" th:field="*{branchEnd}">
-<!--                <option value="" selected>&#45;&#45;&#45;&#45;SELECT CITY&#45;&#45;&#45;&#45;</option>-->
-                <option th:each="branch : ${branches}" th:value="${branch}" th:text="${branch.branchAddress.city}"></option>
+                <option value="" selected>----SELECT END CITY----</option>
+                <option th:each="branch : ${branches}" th:value="${branch.id}" th:text="${branch.branchAddress}"></option>
             </select>
         </div>
-
-
-
-
-<!--        <div class="form-group col-md-6">-->
-<!--            <label class="col-form-label" for="branchEnd">branchEnd</label>-->
-<!--            <input class="form-control" id="branchEnd" placeholder="branchEnd" th:field="*{branchEnd.setId()}" type="text">-->
-<!--            <span class="text-danger" th:errors="*{branchEnd.setId()}" th:if="${#fields.hasErrors('branchEnd')}"></span>-->
-<!--        </div>-->
-<!--        <div class="form-group col-md-6">-->
-<!--            <label class="col-form-label" for="pricePerDay">pricePerDay</label>-->
-<!--            <input class="form-control" id="pricePerDay" placeholder="pricePerDay" th:field="*{pricePerDay}" type="text">-->
-<!--            <span class="text-danger" th:errors="*{pricePerDay}" th:if="${#fields.hasErrors('pricePerDay')}"></span>-->
-<!--        </div>-->
-        <!--    <div class="form-group col-md-6">-->
-        <!--      <label class="col-form-label" for="startBranch">Start Branch</label>-->
-        <!--      <input class="form-control" id="startBranch" placeholder="Start branch" th:field="*{startBranch}" type="text">-->
-        <!--      <span class="text-danger" th:errors="*{startBranch}" th:if="${#fields.hasErrors('startBranch')}"></span>-->
-        <!--    </div>-->
-        <!--    <div class="form-group col-md-6">-->
-        <!--      <label class="col-form-label" for="endBranch">End Branch</label>-->
-        <!--      <input class="form-control" id="endBranch" placeholder="End branch" th:field="*{endBranch}" type="text">-->
-        <!--      <span class="text-danger" th:errors="*{endBranch}" th:if="${#fields.hasErrors('endBranch')}"></span>-->
-        <!--    </div>-->
 
         <button class="btn btn-warning mt-2" type="submit">Submit</button>
     </form>
