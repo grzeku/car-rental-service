@@ -9,53 +9,48 @@
 <body>
 <div th:insert="fragments/navbar :: navbar"></div>
 <div class="container my-5">
-    <h2>Add new car</h2>
+    <h2>Make a reservation</h2>
     <hr>
-    <form method="post" th:action="@{/add-car}" th:object="${car}">
+    <form method="post" th:action="@{/make-a-reservation}" th:object="${reservation}">
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="make">Make</label>
-            <input class="form-control" id="make" placeholder="Make" th:field="*{make}" type="text">
-            <span class="text-danger" th:errors="*{make}" th:if="${#fields.hasErrors('make')}"></span>
+            <label class="col-form-label" for="dateOfReservation">dateOfReservation</label>
+            <input class="form-control" id="dateOfReservation" placeholder="dateOfReservation" th:field="*{dateOfReservation}" type="text">
+            <span class="text-danger" th:errors="*{dateOfReservation}" th:if="${#fields.hasErrors('dateOfReservation')}"></span>
         </div>
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="model">Model</label>
-            <input class="form-control" id="model" placeholder="Model" th:field="*{model}" type="text">
-            <span class="text-danger" th:errors="*{model}" th:if="${#fields.hasErrors('model')}"></span>
+            <label class="col-form-label" for="dateOfPickUp">dateOfPickUp</label>
+            <input class="form-control" id="dateOfPickUp" placeholder="dateOfPickUp" th:field="*{dateOfPickUp}" type="text">
+            <span class="text-danger" th:errors="*{dateOfPickUp}" th:if="${#fields.hasErrors('dateOfPickUp')}"></span>
         </div>
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="bodyStyle">Body Style</label>
-            <input class="form-control" id="bodyStyle" placeholder="Body Style" th:field="*{bodyStyle}" type="text">
-            <span class="text-danger" th:errors="*{bodyStyle}" th:if="${#fields.hasErrors('bodyStyle')}"></span>
+            <label class="col-form-label" for="dateOfReturn">dateOfReturn</label>
+            <input class="form-control" id="dateOfReturn" placeholder="dateOfReturn" th:field="*{dateOfReturn}" type="text">
+            <span class="text-danger" th:errors="*{dateOfReturn}" th:if="${#fields.hasErrors('dateOfReturn')}"></span>
         </div>
+
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="productionYear">Production Year</label>
-            <input class="form-control" id="productionYear" placeholder="Production Year" th:field="*{productionYear}" type="text">
+            <label class="control-label" for="car">car</label>
+            <select class="form-control" id="car" th:field="*{car.id}">
+                <option value="" selected>----SELECT CAR----</option>
+                <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
+            </select>
         </div>
+
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="mileage">Mileage</label>
-            <input class="form-control" id="mileage" placeholder="Mileage" th:field="*{mileage}" type="text">
-            <span class="text-danger" th:errors="*{mileage}" th:if="${#fields.hasErrors('mileage')}"></span>
+            <label class="control-label" for="branchStart">branchStart</label>
+            <select class="form-control" id="branchStart" th:field="*{branchStart}">
+                <option value="" selected>----SELECT START CITY----</option>
+                <option th:each="branch : ${branches}" th:value="${branch.id}" th:text="${branch.branchAddress}"></option>
+            </select>
         </div>
+
         <div class="form-group col-md-6">
-            <label class="col-form-label" for="carAvailabilityStatus">Car availability status</label>
-            <input class="form-control" id="carAvailabilityStatus" placeholder="Car availability status" th:field="*{carAvailabilityStatus}" type="text">
-            <span class="text-danger" th:errors="*{carAvailabilityStatus}" th:if="${#fields.hasErrors('carAvailabilityStatus')}"></span>
+            <label class="control-label" for="branchEnd">branchEnd</label>
+            <select class="form-control" id="branchEnd" th:field="*{branchEnd}">
+                <option value="" selected>----SELECT END CITY----</option>
+                <option th:each="branch : ${branches}" th:value="${branch.id}" th:text="${branch.branchAddress}"></option>
+            </select>
         </div>
-        <div class="form-group col-md-6">
-            <label class="col-form-label" for="price">Price</label>
-            <input class="form-control" id="price" placeholder="Price" th:field="*{price}" type="text">
-            <span class="text-danger" th:errors="*{price}" th:if="${#fields.hasErrors('price')}"></span>
-        </div>
-        <!--    <div class="form-group col-md-6">-->
-        <!--      <label class="col-form-label" for="startBranch">Start Branch</label>-->
-        <!--      <input class="form-control" id="startBranch" placeholder="Start branch" th:field="*{startBranch}" type="text">-->
-        <!--      <span class="text-danger" th:errors="*{startBranch}" th:if="${#fields.hasErrors('startBranch')}"></span>-->
-        <!--    </div>-->
-        <!--    <div class="form-group col-md-6">-->
-        <!--      <label class="col-form-label" for="endBranch">End Branch</label>-->
-        <!--      <input class="form-control" id="endBranch" placeholder="End branch" th:field="*{endBranch}" type="text">-->
-        <!--      <span class="text-danger" th:errors="*{endBranch}" th:if="${#fields.hasErrors('endBranch')}"></span>-->
-        <!--    </div>-->
 
         <button class="btn btn-warning mt-2" type="submit">Submit</button>
     </form>

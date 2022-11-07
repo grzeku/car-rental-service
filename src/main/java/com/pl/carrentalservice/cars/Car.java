@@ -36,6 +36,7 @@ public class Car {
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
+
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name="start_branch")
     private Branch startBranch;

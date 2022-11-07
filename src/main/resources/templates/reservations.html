@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservations</title>
+    <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container my-5">
+    <h2>Reservation</h2>
+
+
+    <a class="btn btn-primary btn-sm mb-3" th:href="@{/make-reservation-form}">Add
+        reservation</a>
+    <!--  </div>-->
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th><p>dateOfReservation</p></th>
+            <th><p>dateOfPickUp</p></th>
+            <th><p>dateOfReturn</p></th>
+            <th><p>car</p></th>
+            <th><p>client</p></th>
+            <th><p>branchStart</p></th>
+            <th><p>branchEnd</p></th>
+            <th><p>pricePerDay</p></th>
+            <th sec:authorize="hasAnyRole('USER','ADMIN')"><p>actions</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservation : ${reservations}">
+            <td th:text="${reservation.getDateOfReservation()}"></td>
+            <td th:text="${reservation.getDateOfPickUp()}"></td>
+            <td th:text="${reservation.getDateOfReturn()}"></td>
+            <td th:text="${reservation.getCar()}"></td>
+            <td th:text="${reservation.getClient()}"></td>
+            <td th:text="${reservation.getBranchStart()}"></td>
+            <td th:text="${reservation.getBranchEnd()}"></td>
+            <td th:text="${reservation.getPricePerDay()}"></td>
+            <td sec:authorize="hasAnyRole('USER','ADMIN')">
+                <a class="btn btn-success btn-sm"
+                   th:href="@{'/make-reservation-form/' + ${reservation.id}}">Make a reservation</a>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-success btn-sm"
+                   th:href="@{'/update-reservation-form/' + ${reservation.id}}">Update reservation</a>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/delete/' + ${reservation.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link disabled" th:if="${currentPage == 1}">Previous</a>
+                <a class="page-link" th:href="@{'?page=' + ${currentPage - 1} + '&size=' + ${size}}"
+                   th:unless="${currentPage == 1}">Previous</a>
+            </li>
+
+            <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                <a class="page-link" th:href="@{'?page=' + ${i} + '&size=' + ${size}}" th:if="${currentPage != i}">[[${i}]]</a>
+                <a class="page-link active" th:if="${currentPage == i}">[[${i}]]</a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link disabled" th:if="${currentPage == totalPages}">Next</a>
+                <a class="page-link" th:href="@{'?page=' + ${currentPage + 1} + '&size=' + ${size}}"
+                   th:unless="${currentPage == totalPages}">Next</a>
+            </li>
+            <li class="list-group-item">
+                <ul class="list-group-horizontal-sm">
+                    <li th:each="i : ${sizes}">
+                        <a class="text-sm-center" th:href="@{'?page=1' + '&size=' + ${i}}">[[${i}]]&nbsp;</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+</body>
+</html>
