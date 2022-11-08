@@ -2,17 +2,15 @@ package com.pl.carrentalservice.employees;
 
 import com.pl.carrentalservice.branches.Branch;
 import com.pl.carrentalservice.carReturn.CarReturn;
-import com.pl.carrentalservice.rent.Rent;
+import com.pl.carrentalservice.carRent.CarRent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
 import org.springframework.stereotype.Component;
 
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "employees")
@@ -42,6 +40,6 @@ public class Employee {
     private List<CarReturn> carReturns;
 
     @OneToMany(mappedBy = "employee")
-    private List<Rent> rents;
+    private List<CarRent> carRents;
 
 }

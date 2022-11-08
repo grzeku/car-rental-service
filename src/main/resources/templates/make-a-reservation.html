@@ -30,12 +30,20 @@
 
         <div class="form-group col-md-6">
             <label class="control-label" for="car">car</label>
-            <select class="form-control" id="car" th:field="*{car.id}">
+            <select class="form-control" id="car" th:field="*{car}">
                 <option value="" selected>----SELECT CAR----</option>
                 <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.model}"></option>
             </select>
         </div>
+        <input th:field="*{pricePerDay}" type="hidden" >
 
+        <div class="form-group col-md-6">
+            <label class="control-label" for="client">client</label>
+            <select class="form-control" id="client" th:field="*{client.email}">
+                <option value="" selected>----SELECT CLIENT----</option>
+                <option th:each="client : ${clients}" th:value="${client.email}" th:text="${client.email}"></option>
+            </select>
+        </div>
         <div class="form-group col-md-6">
             <label class="control-label" for="branchStart">branchStart</label>
             <select class="form-control" id="branchStart" th:field="*{branchStart}">

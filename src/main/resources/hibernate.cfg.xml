@@ -20,7 +20,7 @@
         <mapping class="com.pl.carrentalservice.carReturn.CarReturn"/>
         <mapping class="com.pl.carrentalservice.clients.Client"/>
         <mapping class="com.pl.carrentalservice.employees.Employee"/>
-        <mapping class="com.pl.carrentalservice.rent.Rent"/>
+        <mapping class="com.pl.carrentalservice.carRent.CarRent"/>
         <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
         <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
     </session-factory>

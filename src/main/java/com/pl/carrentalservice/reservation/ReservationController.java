@@ -6,6 +6,8 @@ import com.pl.carrentalservice.branches.BranchRepository;
 import com.pl.carrentalservice.branches.BranchService;
 import com.pl.carrentalservice.cars.Car;
 import com.pl.carrentalservice.cars.CarRepository;
+import com.pl.carrentalservice.clients.Client;
+import com.pl.carrentalservice.clients.ClientRepository;
 import com.pl.carrentalservice.util.HibernateUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,6 +37,7 @@ public class ReservationController {
     private final ReservationRepository repository;
     private final BranchRepository branchRepository;
     private final CarRepository carRepository;
+    private final ClientRepository clientRepository;
 
 
 
@@ -60,10 +63,12 @@ public class ReservationController {
         Reservation reservation = new Reservation();
         List<Branch> branches = branchRepository.findAll();
         List<Car> cars = carRepository.findAll();
+        List<Client> clients = clientRepository.findAll();
         BranchAddress branchAddress = new BranchAddress();
         model.addAttribute("reservation", reservation);
         model.addAttribute("branches", branches);
         model.addAttribute("cars", cars);
+        model.addAttribute("clients", clients);
 //        model.addAttribute("branchAddresses", branchAddress);
 
         return "make-a-reservation";
@@ -75,6 +80,8 @@ public class ReservationController {
         if (result.hasErrors()) {
             return "make-a-reservation";
         }
+        Integer price = reservation.getCar().getPrice();
+        reservation.setPricePerDay(price);
         service.saveReservation(reservation);
         log.info("Requested reservation add");
         return "redirect:/reservations";

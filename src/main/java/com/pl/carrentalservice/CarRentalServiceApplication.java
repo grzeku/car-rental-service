@@ -40,6 +40,13 @@ public class CarRentalServiceApplication {
         Car car8 = new Car("Ferrari", "California", BodyStyle.COUPE, 2017, 24040, CarAvailabilityStatus.RENTED, 259, branch1, branch2);
         Car car9 = new Car("Lamborghini", "Huracan", BodyStyle.COUPE, 2021, 10020, CarAvailabilityStatus.AVAILABLE, 259, branch1, branch2);
         Car car10 = new Car("Fiat", "500", BodyStyle.COMPACT, 2022, 12040, CarAvailabilityStatus.AVAILABLE, 49, branch1, branch2);
+        Client client1 = new Client("Kajkoo", "Kokosza", "blabla@lol.com", "bura, 12" , " USER", "admin");
+        Client client2 = new Client("Kajkok", "Kokosze", "blablabla@lol.com", "bura, 13" , " USER", "admin");
+
+
+        for (Client client : Arrays.asList(client1, client2)) {
+            entityManager.persist(client);
+        }
         for (BranchAddress branchAddress : Arrays.asList(branchAddress1, branchAddress2)) {
             entityManager.persist(branchAddress);
         }

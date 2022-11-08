@@ -32,4 +32,5 @@ public class CarReturn {
     @Column(name="additional_charges")
     private  Integer additionalCharges;
     private  String remarks;
+
 }
