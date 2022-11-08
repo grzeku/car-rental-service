@@ -29,7 +29,7 @@ public class Car {
     @Column(name="production_year")
     private Integer productionYear;
     private Integer mileage;
-    @Column(name="car_availibility_status")
+    @Column(name="car_availability_status")
     @Enumerated(EnumType.STRING)
     private CarAvailabilityStatus carAvailabilityStatus;
     private Integer price;

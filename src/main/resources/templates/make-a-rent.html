@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>First starter page</title>
+    <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container my-5">
+    <h2>Confirm a rent</h2>
+    <hr>
+    <form method="post" th:action="@{/make-a-rent}" th:object="${carRent}">
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="Employee">Employee</label>
+            <input class="form-control" id="Employee" placeholder="Employee" th:field="*{employee}" type="text">
+            <span class="text-danger" th:errors="*{employee}" th:if="${#fields.hasErrors('Employee')}"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="col-form-label" for="dateOfPickUp">dateOfPickUp</label>
+            <input class="form-control" id="dateOfPickUp" placeholder="dateOfPickUp" th:field="*{dateOfPickUp}" type="text">
+            <span class="text-danger" th:errors="*{dateOfPickUp}" th:if="${#fields.hasErrors('dateOfPickUp')}"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label" for="reservation">reservation</label>
+            <select class="form-control" id="reservation" th:field="*{reservation}">
+                <option value="" selected>----SELECT RESERVATION----</option>
+                <option th:each="reservation : ${reservations}" th:value="${reservation}" th:text="${reservation}"></option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label" for="reservation.client">client</label>
+            <select class="form-control" id="reservation.client" th:field="*{reservation}">
+                <option value="" selected>----SELECT CLIENT----</option>
+                <option th:each="reservation : ${reservations}" th:value="${reservation.client}" th:text="${reservation.client}"></option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label" for="branchStart">Starting address</label>
+            <select class="form-control" id="branchStart" th:field="*{reservation}">
+                <option value="" selected>----SELECT START CITY----</option>
+                <option th:each="reservation : ${reservations}" th:value="${reservation.branchStart}" th:text="${reservation.branchStart}"></option>
+            </select>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="control-label" for="branchEnd">End address</label>
+            <select class="form-control" id="branchEnd" th:field="*{reservation}">
+                <option value="" selected>----SELECT END CITY----</option>
+                <option th:each="reservation : ${reservations}" th:value="${reservation.branchEnd}" th:text="${reservation.branchEnd}"></option>
+            </select>
+        </div>
+
+        <button class="btn btn-warning mt-2" type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>

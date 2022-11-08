@@ -13,14 +13,14 @@
         <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="current_session_context_class">thread</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
         <mapping class="com.pl.carrentalservice.branches.Branch"/>
         <mapping class="com.pl.carrentalservice.branches.BranchAddress"/>
         <mapping class="com.pl.carrentalservice.cars.Car"/>
         <mapping class="com.pl.carrentalservice.carReturn.CarReturn"/>
         <mapping class="com.pl.carrentalservice.clients.Client"/>
         <mapping class="com.pl.carrentalservice.employees.Employee"/>
-        <mapping class="com.pl.carrentalservice.rent.Rent"/>
+        <mapping class="com.pl.carrentalservice.carRent.CarRent"/>
         <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
         <mapping class="com.pl.carrentalservice.reservation.Reservation"/>
     </session-factory>
