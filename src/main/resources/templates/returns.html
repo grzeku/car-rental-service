@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rents</title>
+    <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:insert="fragments/navbar :: navbar"></div>
+<div class="container my-5">
+    <h2>Rents</h2>
+
+
+    <a class="btn btn-primary btn-sm mb-3" th:href="@{/accept-rent-form}">Add
+        rent</a>
+    <!--  </div>-->
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th><p>Employee</p></th>
+            <th><p>Pick up date</p></th>
+            <th><p>Client</p></th>
+            <th><p>Starting branch</p></th>
+            <th><p>Ending branch</p></th>
+            <th sec:authorize="hasRole('ADMIN')"><p>Remarks</p></th>
+            <th sec:authorize="hasAnyRole('USER','ADMIN')"><p>actions</p></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="carRent : ${carRents}">
+            <td th:text="${carRent.getEmployee().getSurname()}"></td>
+            <td th:text="${carRent.getReservation().getDateOfPickUp()}"></td>
+            <td th:text="${carRent.getReservation().getClient().getEmail()}"></td>
+            <td th:text="${carRent.getReservation().getBranchStart().getBranchAddress().getCity() +', ' + carRent.getReservation().getBranchStart().getBranchAddress().getStreet()}"></td>
+            <td th:text="${carRent.getReservation().getBranchEnd().getBranchAddress().getCity() +', ' + carRent.getReservation().getBranchEnd().getBranchAddress().getStreet()}"></td>
+            <td sec:authorize="hasRole('ADMIN')"
+             th:text="${carRent.getRemarks()}"></td>
+            <td sec:authorize="hasAnyRole('USER','ADMIN')">
+                <a class="btn btn-success btn-sm"
+                   th:href="@{'/accept-reservation-form/' + ${carRent.id}}">Make a reservation</a>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-success btn-sm"
+                   th:href="@{'/update-reservation-form/' + ${carRent.id}}">Update reservation</a>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/delete/' + ${carRent.id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="...">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link disabled" th:if="${currentPage == 1}">Previous</a>
+                <a class="page-link" th:href="@{'?page=' + ${currentPage - 1} + '&size=' + ${size}}"
+                   th:unless="${currentPage == 1}">Previous</a>
+            </li>
+
+            <li class="page-item" th:each="i: ${#numbers.sequence(1, totalPages)}">
+                <a class="page-link" th:href="@{'?page=' + ${i} + '&size=' + ${size}}" th:if="${currentPage != i}">[[${i}]]</a>
+                <a class="page-link active" th:if="${currentPage == i}">[[${i}]]</a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link disabled" th:if="${currentPage == totalPages}">Next</a>
+                <a class="page-link" th:href="@{'?page=' + ${currentPage + 1} + '&size=' + ${size}}"
+                   th:unless="${currentPage == totalPages}">Next</a>
+            </li>
+            <li class="list-group-item">
+                <ul class="list-group-horizontal-sm">
+                    <li th:each="i : ${sizes}">
+                        <a class="text-sm-center" th:href="@{'?page=1' + '&size=' + ${i}}">[[${i}]]&nbsp;</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+</div>
+</body>
+</html>
